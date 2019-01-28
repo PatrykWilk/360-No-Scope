@@ -13,9 +13,17 @@ if(isset($_SESSION['userid'])){
     <a href="index.php">Home</a><br/>
     <a href="account.php">Account</a><br/>
     <a href="logout.php">Logout</a><br/>
-    <a href="addtour.php">Add Tour</a>
 
-    <h2>View Tours</h2>
+    <h2>Add Tour</h2>
+    <?php require('_includes/submitaddtour.php'); ?>
+    <form action="dashboard.php" method="POST" style="width:100%;">
+        <div class="form-group">
+            <label>Tour Name</label>
+            <input type="text" class="form-control" name="tourname" value="<?php if(isset($_POST['tourname'])) echo$_POST['tourname'];?>">
+        </div>  
+        <button type="submit" name="action" style="width: 300px; font-size: 1.3em;margin-top:10px;">Submit</button>
+    </form>
+    <h2>Edit Tours</h2>
     <table style="width:500px;border-style: solid;">
         <tr>
             <th>Tour ID</th>
@@ -25,7 +33,7 @@ if(isset($_SESSION['userid'])){
         </tr>
         <tr>
             <?php while($row = mysqli_fetch_assoc($result)){ ?>
-				<tr style="cursor:pointer;" onclick="window.location='edittour.php?TOURID=<?php echo $row["tourid"]; ?>'">
+				<tr style="cursor:pointer;" onclick="window.location='edittour.php?tourid=<?php echo $row["tourid"]; ?>'">
 					<td> <?php echo $row["tourid"];?> </td>
 					<td> <?php echo $row["tourname"];?> </td>
 					<td> <?php if($row["tourvisible"] == 1){echo "Public";}else{echo "Private";}?> </td>
