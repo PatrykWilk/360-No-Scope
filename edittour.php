@@ -2,7 +2,7 @@
     include('_includes/config.inc');
     include('_includes/connect_db.php');
     include('_includes/header.html');
-   if(isset($_SESSION['userid'])){
+   if(isset($_SESSION['userid']) && isset($_GET['tourid']) && $_GET['tourid'] != NULL){
     $userid = $_SESSION['userid'];
     $tourid = $_GET['tourid'];
     $sql = "SELECT * FROM tours WHERE tourid='$tourid'";
@@ -55,10 +55,6 @@
             <input type="checkbox" name="TOURVIS" class="form-control" id="exampleFormControlInput1" <?php if($row['tourvisible'] == 1){echo "checked";}else{echo "";} ?>>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Floor Plan</label>
-            <input type="file" name="fileToUpload" id="fileToUpload">
-        </div>
-        <div class="form-group">
             <label for="exampleFormControlInput1">Views</label>
             <input  readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourviews']; ?>">
         </div>
@@ -69,7 +65,7 @@
         <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
     </form>
     <h2>Upload Floor Plan</h2>
-    <form action="uploadFP.php" method="post" enctype="multipart/form-data">
+    <form action="uploadFP.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
         Select image to upload:
         <input type="file" name="fileToUpload" id="fileToUpload">
         <input type="submit" value="Upload Image" name="submitFP">

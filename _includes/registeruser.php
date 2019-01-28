@@ -1,6 +1,5 @@
 <?php
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     require('_includes/connect_db.php');
     $errors = array();

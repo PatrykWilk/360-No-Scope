@@ -1,10 +1,12 @@
 <?php
-$target_dir = "uploads/";
+$target_dir = "uploadsFP/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
-if(isset($_POST["submitFP"])) {
+if(isset($_POST["submitFP"]) && isset($_GET['tourid'])) {
+    include('_includes/connect_db.php');
+    $tourid = $_GET['tourid'];
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
@@ -32,6 +34,11 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        sleep(1);
+        rename($target_dir . $_FILES["fileToUpload"]["name"] , $target_dir . $tourid . "_floorplan." . $imageFileType);
+        $FPname = $tourid . "_floorplan." . $imageFileType;
+        $sql = "UPDATE tours SET tourfloorplan = '$FPname' WHERE tourid = '$tourid'";
+        $result = mysqli_query($conn,$sql);
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
