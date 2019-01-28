@@ -2,10 +2,12 @@
 include('_includes/config.inc');
 include('_includes/connect_db.php');
 include('_includes/header.html');
+// If user is signed in, load page.
 if(isset($_SESSION['userid'])){
     $userid = $_SESSION['userid'];
+    // SQL getting tours accosiated with user.
     $sql = "SELECT * FROM tours WHERE userid='$userid'";
-	$result = $conn->query($sql);
+	$result = mysqli_query($conn,$sql);
     ?>
     
     <!-- Temp Navigation -->
@@ -15,6 +17,7 @@ if(isset($_SESSION['userid'])){
     <a href="logout.php">Logout</a><br/>
 
     <h2>Add Tour</h2>
+    <!-- Add tour to user with just name -->
     <?php require('_includes/submitaddtour.php'); ?>
     <form action="dashboard.php" method="POST" style="width:100%;">
         <div class="form-group">
@@ -23,6 +26,8 @@ if(isset($_SESSION['userid'])){
         </div>  
         <button type="submit" name="action" style="width: 300px; font-size: 1.3em;margin-top:10px;">Submit</button>
     </form>
+
+    <!-- List of user's tours, linked to edit pages -->
     <h2>Edit Tours</h2>
     <table style="width:500px;border-style: solid;">
         <tr>
@@ -32,6 +37,7 @@ if(isset($_SESSION['userid'])){
             <th>Views</th>
         </tr>
         <tr>
+            <!-- Output accosiated tours into a table -->
             <?php while($row = mysqli_fetch_assoc($result)){ ?>
 				<tr style="cursor:pointer;" onclick="window.location='edittour.php?tourid=<?php echo $row["tourid"]; ?>'">
 					<td> <?php echo $row["tourid"];?> </td>

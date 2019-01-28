@@ -3,6 +3,7 @@
     include('_includes/connect_db.php');
     include('_includes/header.html');
     
+    
     if(isset($_SESSION['userid'])){
     $id = $_SESSION['userid'];
     $sql = "SELECT * FROM users WHERE userid='$id'";
