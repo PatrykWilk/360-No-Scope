@@ -7,9 +7,10 @@
     $tourid = $_GET['tourid'];
     $sql = "SELECT * FROM tours WHERE tourid='$tourid'";
     $result = mysqli_query($conn,$sql);
-    $sql1 = "SELECT * FROM rooms WHERE tourid='$tourid'";
-	$result1 = $conn->query($sql);
     $row = mysqli_fetch_array($result);
+    $sql1 = "SELECT * FROM rooms WHERE tourid='$tourid'";
+    $result1 = mysqli_query($conn,$sql1);
+
 
     if (isset($_POST['submit'])) {
         if(!empty($_POST['TOURNAME'])){
@@ -74,6 +75,14 @@
     </form>
     <a href="viewtour.php?tourid=<?php echo $tourid ?>">View Tour</a>
 
+    <h2>Add Room</h2>
+    <form action="_includes/submitaddroom.php?tourid=<?php echo $tourid; ?>" method="POST" style="width:100%;">
+        <div class="form-group">
+            <label>Room Name</label>
+            <input type="text" class="form-control" name="roomname">
+        </div>  
+        <button type="submit" name="action" style="width: 300px; font-size: 1.3em;margin-top:10px;">Submit</button>
+    </form>
     <h2>Rooms</h2>
     <table style="width:500px;border-style: solid;">
         <tr>
@@ -82,11 +91,11 @@
             <th>Floor</th>
         </tr>
         <tr>
-            <?php while($row = mysqli_fetch_assoc($result1)){ ?>
-				<tr style="cursor:pointer;" onclick="window.location='editroom.php?tourid=<?php echo $row["roomid"]; ?>'">
-					<td> <?php echo $row["roomimg"];?> </td>
-					<td> <?php echo $row["roomname"];?> </td>
-                    <td> <?php echo $row["floor"];?> </td>
+            <?php while($row1 = mysqli_fetch_assoc($result1)){ ?>
+				<tr style="cursor:pointer;" onclick="window.location='editroom.php?roomid=<?php echo $row1["roomid"]; ?>'">
+					<td> <?php echo $row1["roomimage"];?> </td>
+					<td> <?php echo $row1["roomname"];?> </td>
+                    <td> <?php echo $row1["roomfloor"];?> </td>
 				</tr>
 			<?php } ?>
         </tr>
