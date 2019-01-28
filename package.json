@@ -1,0 +1,22 @@
+{
+  "name": "360-no-scope",
+  "version": "1.0.0",
+  "description": "CO659 - Enterprise System Development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WiLu48/360-No-Scope.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WiLu48/360-No-Scope/issues"
+  },
+  "homepage": "https://github.com/WiLu48/360-No-Scope#readme",
+  "dependencies": {
+    "@egjs/view360": "^3.2.1-rc"
+  }
+}
