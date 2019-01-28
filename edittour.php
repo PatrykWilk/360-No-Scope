@@ -32,7 +32,7 @@
         } 
         else{
             echo "Invalid inputs<br/>";
-        } 
+        }
     } ?>
 
     <a href="index.php">Home</a><br/>
@@ -55,6 +55,10 @@
             <input type="checkbox" name="TOURVIS" class="form-control" id="exampleFormControlInput1" <?php if($row['tourvisible'] == 1){echo "checked";}else{echo "";} ?>>
         </div>
         <div class="form-group">
+            <label for="exampleFormControlInput1">Floor Plan</label>
+            <input type="file" name="fileToUpload" id="fileToUpload">
+        </div>
+        <div class="form-group">
             <label for="exampleFormControlInput1">Views</label>
             <input  readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourviews']; ?>">
         </div>
@@ -63,6 +67,12 @@
             <input  readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourcreated']; ?>">
         </div>
         <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
+    </form>
+    <h2>Upload Floor Plan</h2>
+    <form action="uploadFP.php" method="post" enctype="multipart/form-data">
+        Select image to upload:
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" value="Upload Image" name="submitFP">
     </form>
     <a href="viewtour.php?tourid=<?php echo $tourid ?>">View Tour</a>
 
