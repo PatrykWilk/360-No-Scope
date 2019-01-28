@@ -7,7 +7,9 @@
     $tourid = $_GET['tourid'];
     $sql = "SELECT * FROM tours WHERE tourid='$tourid'";
     $result = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_array($result); 
+    $sql1 = "SELECT * FROM rooms WHERE tourid='$tourid'";
+	$result1 = $conn->query($sql);
+    $row = mysqli_fetch_array($result);
 
     if (isset($_POST['submit'])) {
         if(!empty($_POST['TOURNAME'])){
@@ -71,6 +73,24 @@
         <input type="submit" value="Upload Image" name="submitFP">
     </form>
     <a href="viewtour.php?tourid=<?php echo $tourid ?>">View Tour</a>
+
+    <h2>Rooms</h2>
+    <table style="width:500px;border-style: solid;">
+        <tr>
+            <th>Thumbnail</th>
+            <th>Name</th>
+            <th>Floor</th>
+        </tr>
+        <tr>
+            <?php while($row = mysqli_fetch_assoc($result1)){ ?>
+				<tr style="cursor:pointer;" onclick="window.location='editroom.php?tourid=<?php echo $row["roomid"]; ?>'">
+					<td> <?php echo $row["roomimg"];?> </td>
+					<td> <?php echo $row["roomname"];?> </td>
+                    <td> <?php echo $row["floor"];?> </td>
+				</tr>
+			<?php } ?>
+        </tr>
+    </table>
 
     <?php
     include('_includes/footer.html');
