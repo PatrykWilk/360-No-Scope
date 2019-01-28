@@ -1,8 +1,8 @@
 <?php
 include('_includes/config.inc');
 include('_includes/connect_db.php');
+include('_includes/header.html');
 if(isset($_SESSION['userid'])){
-    include('_includes/header.html');
     $userid = $_SESSION['userid'];
     $sql = "SELECT * FROM tours WHERE userid='$userid'";
 	$result = $conn->query($sql);

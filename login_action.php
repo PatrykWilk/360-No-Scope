@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $_SESSION['userid'] = $data['userid'];
         $_SESSION['firstname'] = $data['firstname'];
         $_SESSION['lastname'] = $data['lastname'];
-        $_SESSION['permiss'] = $data['permiss'];
 
         load('dashboard.php');
     }

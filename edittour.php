@@ -1,9 +1,8 @@
 <?php
-if(!isset($_SESSION['userid'])){
     include('_includes/config.inc');
     include('_includes/connect_db.php');
     include('_includes/header.html');
-   
+   if(isset($_SESSION['userid'])){
     $userid = $_SESSION['userid'];
     $tourid = $_GET['tourid'];
     $sql = "SELECT * FROM tours WHERE tourid='$tourid'";
@@ -74,5 +73,5 @@ else {
     echo '<h3 style="color:RED">404: Page could not be found.</h3>
             <p>You will be redirected shortly.</p>';
             header( "refresh:1;url=login.php" );
-}; 
+}
 ?>

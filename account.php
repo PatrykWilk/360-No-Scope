@@ -1,11 +1,11 @@
 <?php
-if(!isset($_SESSION['userid'])){
     include('_includes/config.inc');
     include('_includes/connect_db.php');
     include('_includes/header.html');
-   
+    
+    if(isset($_SESSION['userid'])){
     $id = $_SESSION['userid'];
-    $sql = "SELECT * FROM users WHERE userid='" . $id . "';";
+    $sql = "SELECT * FROM users WHERE userid='$id'";
     $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_array($result);
     if (isset($_POST['submit'])) {
@@ -68,5 +68,5 @@ else {
     echo '<h3 style="color:RED">404: Page could not be found.</h3>
             <p>You will be redirected shortly.</p>';
             header( "refresh:1;url=login.php" );
-}; 
+}
 ?>
