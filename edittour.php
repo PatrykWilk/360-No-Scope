@@ -74,6 +74,10 @@
                 <label for="exampleFormControlInput1">Created</label>
                 <input  readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourcreated']; ?>">
             </div>
+            <div style="width:100%" class="form-group">
+                <label for="exampleFormControlInput1">Link To View (If visible)</label>
+                <input readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo "www.360noscope.com/viewtour.php?tourid=" . $tourid; ?>">
+            </div>
             <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
         </form>
 
