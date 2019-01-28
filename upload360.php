@@ -35,8 +35,8 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         sleep(1);
-        rename($target_dir . $_FILES["fileToUpload"]["name"] , $target_dir . $roomid . "_floorplan." . $imageFileType);
-        $name = $roomid . "_360." . $imageFileType;
+        rename($target_dir . $_FILES["fileToUpload"]["name"] , $target_dir . $roomid . "_360view." . $imageFileType);
+        $name = $roomid . "_360view." . $imageFileType;
         $sql = "UPDATE rooms SET roomimage = '$name' WHERE tourid = '$roomid'";
         $result = mysqli_query($conn,$sql);
     } else {
