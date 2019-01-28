@@ -77,7 +77,7 @@
             <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
         </form>
 
-        <?php if($row['tourname'] != NULL){ ?>
+        <?php if($row['tourfloorplan'] != NULL){ ?>
             <img src="uploadsFP/<?php echo $tourid; ?>_floorplan.jpg" style="width:500px;" />
             
         <?php }
