@@ -31,7 +31,6 @@ if(isset($_SESSION['userid'])){
     <h2>Edit Tours</h2>
     <table style="width:500px;border-style: solid;">
         <tr>
-            <th>Tour ID</th>
             <th>Name</th>
             <th>Visibility</th>
             <th>Views</th>
@@ -40,7 +39,6 @@ if(isset($_SESSION['userid'])){
             <!-- Output accosiated tours into a table -->
             <?php while($row = mysqli_fetch_assoc($result)){ ?>
 				<tr style="cursor:pointer;" onclick="window.location='edittour.php?tourid=<?php echo $row["tourid"]; ?>'">
-					<td> <?php echo $row["tourid"];?> </td>
 					<td> <?php echo $row["tourname"];?> </td>
 					<td> <?php if($row["tourvisible"] == 1){echo "Public";}else{echo "Private";}?> </td>
                     <td> <?php echo $row["tourviews"];?> </td>
