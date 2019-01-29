@@ -1,8 +1,8 @@
 <?php
-    $servername = "uk59.siteground.eu";
-    $username = "dhawserm_lads";
-    $password = "7ehK3p6JEjhAP2Y";
-    $database = "dhawserm_360noscope";
+    $servername = "localhost";
+    $username = "roots";
+    $password = "";
+    $database = "360noscope";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $database);
