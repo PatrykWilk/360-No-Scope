@@ -1,7 +1,7 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $servername = "dhawserm_360noscope";
+    $username = "dhawserm_lads";
+    $password = "7ehK3p6JEjhAP2Y";
     $database = "360noscope";
 
     // Create connection
