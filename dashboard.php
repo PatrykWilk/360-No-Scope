@@ -12,25 +12,30 @@ if(isset($_SESSION['userid'])){
     ?>
     
     <!-- Temp Navigation -->
-    <div class="col-xs-2" align="center" >
+    <div id="col-xs-2" align="center">
     <h1>Welcome <?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'];?></h1>
-
-    <h2>Add Tour</h2>
+</div>
+    <hr>
+<div class="col-xs-2" align="left" style="margin-left: 15%;">
+    <h2>Add Tour</h2> 
     <!-- Add tour to user with just name -->
     <?php require('_includes/submitaddtour.php'); ?>
     <form action="dashboard.php" method="POST" style="width:100%;">
-        <div class="form-group">
+        <div class="form-group" style="width:30%"; align="left">
 </br>
-            <label>Tour Name</label>
+            <label><strong>Tour Name:</strong></label>
+            <div class="input-group" style=" col-xs-2" align="center">
             <input type="text" class="form-control"style="width: 30%;" name="tourname" value="<?php if(isset($_POST['tourname'])) echo$_POST['tourname'];?>">
         
-        <button type="submit" name="action" class="btn btn-primary" style="width: 100px; font-size: 1.3em;margin-top:10px; margin-left:270px;">Add</button>
-        </div>  </form>
+        <button type="submit" name="action" class="btn btn-primary" style="width: 20%; font-size: 1.1em; margin-top: -1px; margin-left:20px;">Add</button>
+</div></div>  </form>
 </br>
 
+
+<div class="col-xs-2" align="right" style="margin-right: 15%; margin-top: -180px;">
     <!-- List of user's tours, linked to edit pages -->
-    <h2>Edit Tours</h2></br>
-    <table style="width:500px;border-style: solid;">
+    <div id="Edit" align="center" style="margin-left: 16%;"><h2>Edit Tours</h2></br></div>
+    <table style="width:48%;border-style: solid;">
         <tr>
             <th>Name</th>
             <th>Visibility</th>
@@ -47,18 +52,8 @@ if(isset($_SESSION['userid'])){
 			<?php } ?>
         </tr>
     </table>
-            </div>
+            </div>       
             
-
-
-
-
-
-
-
-
-
-
 <?php }
 else{
     header("Location: index.php");

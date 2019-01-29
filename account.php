@@ -57,7 +57,7 @@
             <label style="margin-right:500px;" for="exampleFormControlInput1">Company</label>
             <input  style="width:100%;" name="COMPANY" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['company']; ?>">
         </div>
-        <div id="id" style="margin-left:250px;">
+        <div id="id" style="margin-left:270px;">
         <input value="Update Details" type="submit" name="submit" class="btn btn-success"/>
 </div>
     </form>     
