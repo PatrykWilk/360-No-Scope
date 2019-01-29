@@ -33,32 +33,36 @@
         } 
     }
     ?>
-
+<div class="col-xs-1" align="center">
+        <div class="down">
     <h3>Account Settings</h3>
     <form style="width:400px;" method="post">
         <div style="width:100%" class="form-group">
-            <label for="exampleFormControlInput1">ID</label>
+            <label style="margin-right:500px;" for="exampleFormControlInput1">ID</label>
             <input readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo $id; ?>">
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Forename</label>
+            <label style="margin-right:500px;" for="exampleFormControlInput1">Forename</label>
             <input  style="width:100%;" name="FORENAME" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['firstname']; ?>">
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Surname</label>
+            <label style="margin-right:500px;" for="exampleFormControlInput1">Surname</label>
             <input  style="width:100%;" name="SURNAME" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['lastname']; ?>">
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Email</label>
+            <label style="margin-right:500px;" for="exampleFormControlInput1">Email</label>
             <input  style="width:100%;" name="EMAIL" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['email']; ?>">
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Company</label>
+            <label style="margin-right:500px;" for="exampleFormControlInput1">Company</label>
             <input  style="width:100%;" name="COMPANY" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['company']; ?>">
         </div>
+        <div id="id" style="margin-left:250px;">
         <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
+</div>
     </form>     
-
+</div>
+</div>
     <?php
     include('_includes/footer.html');
 }
