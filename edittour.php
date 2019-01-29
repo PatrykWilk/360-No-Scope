@@ -55,91 +55,98 @@
         <div class="container">
             <form method="post">
             <h2>Edit Tour</h2>
+            <hr>
             <div class="row">
                 <div class="col-sm">
                     <label for="exampleFormControlInput1">ID</label>
                     <input readonly class="form-control" id="exampleFormControlInput1" value="<?php echo $tourid; ?>">
 
-                    <label for="exampleFormControlInput1">Views</label>
-                    <input readonly class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourviews']; ?>">
-                    
-                    <label for="exampleFormControlInput1">Visibility</label>
-                    <input type="checkbox" name="TOURVIS" class="form-control" id="exampleFormControlInput1" <?php if($row['tourvisible'] == 1){echo "checked";}else{echo "";} ?>>
-                </div>
-                <div class="col-sm">
                     <label for="exampleFormControlInput1">Tour Name</label>
                     <input name="TOURNAME" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourname']; ?>">
-
+                    
                     <label for="exampleFormControlInput1">Created</label>
                     <input  readonly class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourcreated']; ?>">
 
+                    <label for="exampleFormControlInput1">Views</label>
+                    <input readonly class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourviews']; ?>">
+                    
                     <label for="exampleFormControlInput1">Link To View (If visible)</label>
                     <input readonly class="form-control" id="exampleFormControlInput1" value="<?php echo "www.360noscope.com/viewtour.php?tourid=" . $tourid; ?>">
+                    
+                    <label for="exampleFormControlInput1">Visibility</label>
+                    <input type="checkbox" name="TOURVIS" class="form-control" id="exampleFormControlInput1" <?php if($row['tourvisible'] == 1){echo "checked";}else{echo "";} ?>>
+
+                    <input style="margin-top:10px;" value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
+                    </form>
+                </div>
+                <div class="col-sm"> 
+                    <div class="row" style="margin-top:30px;">
+                        <?php if($row['tourfloorplan'] != NULL){ ?>
+                        <div class="card" style="width: 100%;">
+                            <img src="uploadsFP/<?php echo $row['tourfloorplan']; ?>" class="card-img-top" />
+                            <div class="card-body">
+                                <form action="edittour.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
+                                    <input type="submit" value="Delete Floor Plan" name="submitDelFP">
+                                </form>  
+                            </div>
+                        </div>
+                    <?php } else{ ?>
+                        <!-- Floor plan upload -->
+                        <h2>Upload Floor Plan</h2>
+                        <form action="uploadFP.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
+                            Select image to upload:<br/>
+                            <input type="file" name="fileToUpload" id="fileToUpload">
+                            <input type="submit" value="Upload Image" name="submitFP">
+                        </form>
+                    <?php } ?>
+                    </div>
                 </div>
             </div>
-            <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
-            </form>
+            <a href="viewtour.php?tourid=<?php echo $tourid ?>">View Tour</a>
+            <hr>
+            <!-- Add room -->
+            <h2>Rooms</h2>
+            
+
+            <!-- Listing rooms associated with tour -->
+            <table class="table table-hover" style="border-style: solid; border-width: 1px; border-color: #cecece;">
+                <thead>
+                    <tr>
+                        <th>Thumbnail</th>
+                        <th>Name</th>
+                        <th>Floor</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <?php while($row1 = mysqli_fetch_assoc($result1)){ ?>
+                        <tr style="cursor:pointer;" onclick="window.location='editroom.php?roomid=<?php echo $row1["roomid"]; ?>'">
+                            <td> <?php echo $row1["roomimage"];?> </td>
+                            <td> <?php echo $row1["roomname"];?> </td>
+                            <td> <?php echo $row1["roomfloor"];?> </td>
+                        </tr>
+                    <?php } ?>
+                </tr>
+            </table>
+
+                <form action="_includes/submitaddroom.php?tourid=<?php echo $tourid; ?>" method="POST" style="width:100%;">
+                    <div class="form-group">
+                        <label>Add room, insert Room Name here</label>
+                        <input type="text" class="form-control" name="roomname">
+                    </div>  
+                    <button type="submit" name="action" style="width: 300px; font-size: 1.3em;margin-top:10px;">Submit</button>
+                </form>
+
+
+
+
+
+
+
         </div>
+            
 
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
-
-        <!-- Upload floor plan -->
-        <?php if($row['tourfloorplan'] != NULL){ ?>
-            <!-- If there's a floor plan, show image -->
-            <img src="uploadsFP/<?php echo $row['tourfloorplan']; ?>" style="width:500px;" />
-            <form action="edittour.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
-                <input type="submit" value="Delete" name="submitDelFP">
-            </form>     
-        <?php }
-        else{ ?>
-            <!-- Floor plan upload -->
-            <h2>Upload Floor Plan</h2>
-            <form action="uploadFP.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
-                Select image to upload:
-                <input type="file" name="fileToUpload" id="fileToUpload">
-                <input type="submit" value="Upload Image" name="submitFP">
-            </form>
-        <?php } ?>
 
         
-        <br/> <br/><a href="viewtour.php?tourid=<?php echo $tourid ?>">View Tour</a>
-
-        <!-- Add room -->
-        <h2>Add Room</h2>
-        <form action="_includes/submitaddroom.php?tourid=<?php echo $tourid; ?>" method="POST" style="width:100%;">
-            <div class="form-group">
-                <label>Room Name</label>
-                <input type="text" class="form-control" name="roomname">
-            </div>  
-            <button type="submit" name="action" style="width: 300px; font-size: 1.3em;margin-top:10px;">Submit</button>
-        </form>
-
-        <!-- Listing rooms associated with tour -->
-        <h2>Rooms</h2>
-        <table style="width:500px;border-style: solid;">
-            <tr>
-                <th>Thumbnail</th>
-                <th>Name</th>
-                <th>Floor</th>
-            </tr>
-            <tr>
-                <?php while($row1 = mysqli_fetch_assoc($result1)){ ?>
-                    <tr style="cursor:pointer;" onclick="window.location='editroom.php?roomid=<?php echo $row1["roomid"]; ?>'">
-                        <td> <?php echo $row1["roomimage"];?> </td>
-                        <td> <?php echo $row1["roomname"];?> </td>
-                        <td> <?php echo $row1["roomfloor"];?> </td>
-                    </tr>
-                <?php } ?>
-            </tr>
-        </table>
 
         <?php
         include('_includes/footer.html');
