@@ -57,13 +57,25 @@
         <a href="account.php">Account</a><br/>
         <a href="logout.php">Logout</a>
 
-        <!-- Edit tour details -->
-        <h2>Edit Tour</h2>
-        <form style="width:400px;" method="post">
-            <div style="width:100%" class="form-group">
+        <div id="container">
+            <div id="row">
+                <h2>Edit Tour</h2>
+            </div>
+            <form style="width:400px;" method="post">
+            <div id="row">
+                <div style="width:100%" class="form-group">
                 <label for="exampleFormControlInput1">ID</label>
                 <input readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo $tourid; ?>">
+            </div>`
             </div>
+        </div>
+
+
+
+        <!-- Edit tour details -->
+        
+        
+            
             <div class="form-group">
                 <label for="exampleFormControlInput1">Tour Name</label>
                 <input  style="width:100%;" name="TOURNAME" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourname']; ?>">

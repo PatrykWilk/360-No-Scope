@@ -73,8 +73,12 @@
         <!-- Upload floor plan -->
         <?php if($row['roomimage'] != NULL){ ?>
             <!-- If there's a floor plan, show image -->
-            <!-- PATRYK PUT 360 VIEW HERE -->
+
+            <!-- PATRYK: REPLACE IMG WITH 360 VIEW -->
             <img src="uploads360/<?php echo $row['roomimage'] ?>" style="width:500px;" />
+
+
+            <!-- Delete 360 Image -->
             <form action="editroom.php?roomid=<?php echo $roomid;?>" method="post" enctype="multipart/form-data">
                 <input type="submit" value="Delete" name="submitDel360">
             </form>     
