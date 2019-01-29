@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2019 at 05:56 PM
+-- Generation Time: Jan 29, 2019 at 02:48 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -33,15 +33,19 @@ CREATE TABLE `rooms` (
   `tourid` int(8) NOT NULL,
   `roomname` varchar(50) NOT NULL,
   `roomimage` varchar(50) DEFAULT NULL,
-  `floor` int(1) DEFAULT NULL
+  `roomfloor` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`roomid`, `tourid`, `roomname`, `roomimage`, `floor`) VALUES
-(1000000000, 6, 'Bathroom', '', 2);
+INSERT INTO `rooms` (`roomid`, `tourid`, `roomname`, `roomimage`, `roomfloor`) VALUES
+(1000000008, 6, 'Living Room', NULL, 3),
+(1000000009, 8, 'brap', NULL, NULL),
+(1000000010, 9, 'toy room', NULL, 5),
+(1000000011, 10, 'Living Room', NULL, 3),
+(1000000012, 10, 'Bed Room', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -64,7 +68,8 @@ CREATE TABLE `tours` (
 --
 
 INSERT INTO `tours` (`tourid`, `tourname`, `tourvisible`, `tourviews`, `userid`, `tourcreated`, `tourfloorplan`) VALUES
-(6, '25 Carlisle Way', 0, 0, 10000, '2019-01-28 14:30:33', '6_floorplan.jpg');
+(9, '25 Wellington Street', 0, 0, 10001, '2019-01-29 11:57:41', '9_floorplan.jpg'),
+(10, '25 Carlisle Way', 0, 0, 10000, '2019-01-29 12:33:46', '10_floorplan.jpg');
 
 -- --------------------------------------------------------
 
@@ -88,7 +93,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userid`, `firstname`, `lastname`, `email`, `pass`, `company`, `regdate`, `permiss`) VALUES
-(10000, 'Joseph', 'Hopping', 'joe_hopping@hotmail.co.uk', 'c22b5f9178342609428d6f51b2c5af4c0bde6a42', '', '2019-01-26 14:23:01', 0);
+(10000, 'Joseph', 'Hopping', 'joe_hopping@hotmail.co.uk', 'c22b5f9178342609428d6f51b2c5af4c0bde6a42', '', '2019-01-26 14:23:01', 0),
+(10001, 'duje', 'bav', 'duje@gmail.com', 'd4cef45ee62779247c30d11899c10bebbe739747', NULL, '2019-01-29 11:57:11', 0);
 
 --
 -- Indexes for dumped tables
@@ -120,19 +126,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `roomid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000001;
+  MODIFY `roomid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000013;
 
 --
 -- AUTO_INCREMENT for table `tours`
 --
 ALTER TABLE `tours`
-  MODIFY `tourid` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `tourid` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
+  MODIFY `userid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10002;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

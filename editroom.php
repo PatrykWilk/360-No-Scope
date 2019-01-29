@@ -67,6 +67,32 @@
             <input type="submit" value="Upload Image" name="submit360">
         </form>
 
+
+        <!-- Upload floor plan -->
+        <?php if($row['roomimage'] != NULL){ ?>
+            <!-- If there's a floor plan, show image -->
+            <!-- PATRYK PUT 360 VIEW HERE -->
+            <img src="uploads360/<?php echo $tourid; ?>_floorplan.jpg" style="width:500px;" />
+            <form action="edittour.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
+                <input type="submit" value="Delete" name="submitDelFP">
+            </form>     
+
+            
+        <?php }
+        else{ ?>
+            <!-- Floor plan upload -->
+            <h2>Upload Floor Plan</h2>
+            <form action="uploadFP.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
+                Select image to upload:
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="submit" value="Upload Image" name="submitFP">
+            </form>
+        <?php } ?>
+
+
+
+
+
         <?php
         include('_includes/footer.html');
     }

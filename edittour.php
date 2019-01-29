@@ -90,7 +90,7 @@
         <!-- Upload floor plan -->
         <?php if($row['tourfloorplan'] != NULL){ ?>
             <!-- If there's a floor plan, show image -->
-            <img src="uploadsFP/<?php echo $tourid; ?>_floorplan.jpg" style="width:500px;" />
+            <img src="uploadsFP/<?php echo $row['tourfloorplan']; ?>" style="width:500px;" />
             <form action="edittour.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
                 <input type="submit" value="Delete" name="submitDelFP">
             </form>     
