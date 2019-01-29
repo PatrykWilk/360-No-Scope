@@ -15,7 +15,7 @@
         // When user submits to save details   
         if (isset($_POST['submit'])) {
             if(!empty($_POST['ROOMNAME']) && !empty($_POST['ROOMFLOOR'])){
-                $txtRoomName = mysqli_real_escape_string($conn, $_POST['TOURNAME']);
+                $txtRoomName = mysqli_real_escape_string($conn, $_POST['ROOMNAME']);
                 $txtRoomFloor = mysqli_real_escape_string($conn, $_POST['ROOMFLOOR']);
                 
                 // SQL saving onto database
