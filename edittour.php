@@ -90,8 +90,11 @@
                     </div>
 
                     <input style="margin-top:10px;" value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
-                    <a style="margin-top:10px;" href="viewtour.php?tourid=<?php echo $tourid ?>" class="btn btn-primary">View Tour</a>
                     </form>
+                    <form action="deletetour.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
+                        <input type="submit" value="Delete Tour" name="submitDelTour" class="btn btn-danger">
+                    </form>  
+                    <a style="margin-top:10px;" href="viewtour.php?tourid=<?php echo $tourid ?>" class="btn btn-primary">View Tour</a>
                 </div>
                 <!-- Upload / View or Delete Floor Plan -->
                 <div class="col-sm"> 
@@ -155,19 +158,7 @@
                         <input type="submit" value="Add Room" name="action" class="btn btn-primary" style="margin-top:10px;">
                     </div>  
                 </form>
-
-
-
-
-
-
-
         </div>
-            
-
-
-        
-
         <?php
         include('_includes/footer.html');
     }
