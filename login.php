@@ -12,6 +12,7 @@ else{
     <div id="loginbox" style="width:400px;">
             <h2>Login</h2>
             <hr>
+    <h1>cyka</h1>
                 <?php
                     if (isset($errors) && !empty($errors)){
                         echo '<div id="loginerror"><p id="err_msg">There was a problem:<br>';

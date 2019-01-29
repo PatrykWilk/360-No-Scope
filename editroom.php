@@ -33,7 +33,15 @@
             else{
                 echo "Invalid inputs<br/>";
             }
-        } ?>
+        }
+
+        if(isset($_POST['submitDel360'])) {
+            unlink('uploads360/' . $row['roomimage']);
+            $sqldel = "UPDATE rooms SET roomimage = NULL WHERE roomid = '$roomid'";
+            $resultdel = mysqli_query($conn,$sqldel);
+            header("Refresh:0");          
+        }
+        ?>
 
         <!-- Temp Navigation -->
         <a href="index.php">Home</a><br/>
@@ -59,13 +67,38 @@
             <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
         </form>
 
-        <!-- Upload 360 Image -->
-        <h2>Upload 360 Image</h2>
-        <form action="upload360.php?roomid=<?php echo $roomid;?>" method="post" enctype="multipart/form-data">
+        
+
+
+        <!-- Upload floor plan -->
+        <?php if($row['roomimage'] != NULL){ ?>
+            <!-- If there's a floor plan, show image -->
+
+            <!-- PATRYK: REPLACE IMG WITH 360 VIEW -->
+            <img src="uploads360/<?php echo $row['roomimage'] ?>" style="width:500px;" />
+
+
+            <!-- Delete 360 Image -->
+            <form action="editroom.php?roomid=<?php echo $roomid;?>" method="post" enctype="multipart/form-data">
+                <input type="submit" value="Delete" name="submitDel360">
+            </form>     
+
+            
+        <?php }
+        else{ ?>
+            <!-- Upload 360 Image -->
+            <h2>Upload 360 Image</h2>
+            <form action="upload360.php?roomid=<?php echo $roomid;?>" method="post" enctype="multipart/form-data">
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
             <input type="submit" value="Upload Image" name="submit360">
         </form>
+            
+        <?php } ?>
+
+
+
+
 
         <?php
         include('_includes/footer.html');
