@@ -58,6 +58,12 @@
             <form method="post">
             <!-- Edit Tour Details -->
             <h2>Edit Tour</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Tour</li>
+                </ol>
+            </nav>
             <hr>
             <div class="row">
                 <div class="col-sm">
@@ -75,11 +81,16 @@
                     
                     <label for="exampleFormControlInput1">Link To View (If visible)</label>
                     <input readonly class="form-control" id="exampleFormControlInput1" value="<?php echo "www.360noscope.com/viewtour.php?tourid=" . $tourid; ?>">
-                    
-                    <label for="exampleFormControlInput1">Visibility</label>
-                    <input type="checkbox" name="TOURVIS" class="form-control" id="exampleFormControlInput1" <?php if($row['tourvisible'] == 1){echo "checked";}else{echo "";} ?>>
+
+                    <div class="form-check" style="margin-top:10px;">
+                        <input class="form-check-input"  name="TOURVIS" type="checkbox" id="defaultCheck1" <?php if($row['tourvisible'] == 1){echo "checked";}else{echo "";} ?>>
+                        <label class="form-check-label" for="defaultCheck1">
+                            Publicly Visible
+                        </label>
+                    </div>
 
                     <input style="margin-top:10px;" value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
+                    <a style="margin-top:10px;" href="viewtour.php?tourid=<?php echo $tourid ?>" class="btn btn-primary">View Tour</a>
                     </form>
                 </div>
                 <!-- Upload / View or Delete Floor Plan -->
@@ -91,7 +102,7 @@
                             <img src="uploadsFP/<?php echo $row['tourfloorplan']; ?>" class="card-img-top" />
                             <div class="card-body">
                                 <form action="edittour.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
-                                    <input type="submit" value="Delete Floor Plan" name="submitDelFP" class="btn btn-primary">
+                                    <input type="submit" value="Delete Floor Plan" name="submitDelFP" class="btn btn-danger">
                                 </form>  
                             </div>
                         </div>
@@ -107,7 +118,7 @@
                     </div>
                 </div>
             </div>
-            <a href="viewtour.php?tourid=<?php echo $tourid ?>">View Tour</a>
+
             <hr>
             <h2>Rooms</h2>
             
@@ -120,15 +131,18 @@
                         <th>Floor</th>
                     </tr>
                 </thead>
-                <tr>
                     <?php while($row1 = mysqli_fetch_assoc($result1)){ ?>
-                        <tr style="cursor:pointer;" onclick="window.location='editroom.php?roomid=<?php echo $row1["roomid"]; ?>'">
-                            <td> <?php echo $row1["roomimage"];?> </td>
+                        <tr style="cursor:pointer;" onclick="window.location='editroom.php?roomid=<?php echo $row1["roomid"]; ?>''">
+                            <?php if($row1['roomimage'] != NULL){ ?>
+                                <td> <img src="uploads360/<?php echo $row1['roomimage']; ?>" style="width:250px; margin:0px auto 0px auto;" /> </td>
+                            <?php } else{ ?>
+                                <td>No Image Found</td>
+                            <?php } ?>
+                            
                             <td> <?php echo $row1["roomname"];?> </td>
                             <td> <?php echo $row1["roomfloor"];?> </td>
                         </tr>
                     <?php } ?>
-                </tr>
             </table>
 
                 <form action="_includes/submitaddroom.php?tourid=<?php echo $tourid; ?>" method="POST" style="width:100%;">

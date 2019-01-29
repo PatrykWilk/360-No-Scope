@@ -46,6 +46,13 @@
 
         <!-- Edit room details -->
         <h2>Edit Room</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="edittour.php?tourid=<?php echo $row['tourid']; ?>">Edit Tour</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Room</li>
+            </ol>
+        </nav>
         <form style="width:400px;" method="post">
             <div style="width:100%" class="form-group">
                 <label for="exampleFormControlInput1">ID</label>
