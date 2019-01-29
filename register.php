@@ -5,6 +5,7 @@
         header("Location: dashboard.php");
     }
     include('_includes/header.html');
+    include('_includes/nav.html');
 ?>
 
 <div style="width:400px;">

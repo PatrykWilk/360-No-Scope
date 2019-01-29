@@ -2,6 +2,7 @@
     include('_includes/config.inc');
     include('_includes/connect_db.php');
     include('_includes/header.html');
+    include('_includes/nav.html');
 
     // Check if user is signed in and url is correct
     if(isset($_SESSION['userid']) && isset($_GET['roomid']) && $_GET['roomid'] != NULL){
@@ -42,12 +43,6 @@
             header("Refresh:0");          
         }
         ?>
-
-        <!-- Temp Navigation -->
-        <a href="index.php">Home</a><br/>
-        <a href="dashboard.php">Dashboard</a><br/>
-        <a href="account.php">Account</a><br/>
-        <a href="logout.php">Logout</a>
 
         <!-- Edit room details -->
         <h2>Edit Room</h2>
