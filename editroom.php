@@ -41,7 +41,7 @@
         if (isset($_POST['delete'])) {
             $dsql = "DELETE FROM rooms WHERE roomid = $roomid";
             $dres = mysqli_query($conn,$dsql);
-            header("location:edittour.php?tourid=8");
+            header("location:edittour.php?tourid=".$row['tourid']);
         }
 
         if(isset($_POST['submitDel360'])) {
