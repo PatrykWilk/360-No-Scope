@@ -58,7 +58,7 @@
             <input  style="width:100%;" name="COMPANY" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['company']; ?>">
         </div>
         <div id="id" style="margin-left:250px;">
-        <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
+        <input value="Update Details" type="submit" name="submit" class="btn btn-success"/>
 </div>
     </form>     
 </div>

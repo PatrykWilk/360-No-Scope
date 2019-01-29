@@ -41,26 +41,26 @@
     if(isset($_SESSION['userid'])){$userID=$_SESSION['userid'];}else{$userID=NULL;}
     if($row['tourvisible'] == 1 || $userID == $row['userid']){ ?>
     <head>
-        <title>Document</title>
-        <link rel="stylesheet" type="text/css" href="styles/360.css">
         <script src="https://naver.github.io/egjs-view360/common/js/jquery-2.2.4.js"></script>
         <script src="node_modules\@egjs\view360\dist\view360.pkgd.js"></script>
     </head>
     <body>
-        <?php include('_includes/nav.html'); ?>
-        <h1>Visible Tour / Owner View</h1>
+        <?php if(isset($_SESSION['userid'])) {
+            include('_includes/nav.html');
+        }?>
+        <div class="container">
+            <h1>Visible Tour / Owner View</h1>
+            <div id="myPanoViewer" class="viewer"></div>
+            <select id="selectRoom" class="selector" onchange="getname(this)">
+            <?php 
+            foreach ($room_name as $index => $name) {
+                ?> <option value="<?php echo $room_img[$index] ?>"><?php echo $name ?></option>   
+                <?php
+            }
+            ?>
+            </select>
 
-        <select id="selectRoom" onchange="getname(this)">
-        <?php 
-        foreach ($room_name as $index => $name) {
-            ?> <option value="<?php echo $room_img[$index] ?>"><?php echo $name ?></option>   
-            <?php
-        }
-        ?>
-        </select>
-
-
-        <div id="myPanoViewer" class="viewer"></div>
+        </div>
 
         <script>
             var x = "<?php 
