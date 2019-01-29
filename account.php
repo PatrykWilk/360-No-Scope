@@ -2,6 +2,7 @@
     include('_includes/config.inc');
     include('_includes/connect_db.php');
     include('_includes/header.html');
+    include('_includes/nav.html');
     
     
     if(isset($_SESSION['userid'])){
@@ -31,11 +32,7 @@
             echo "Invalid inputs<br/>";
         } 
     }
-    
     ?>
-    <a href="index.php">Home</a><br/>
-    <a href="dashboard.php">Dashboard</a><br/>
-    <a href="logout.php">Logout</a>
 
     <h3>Account Settings</h3>
     <form style="width:400px;" method="post">

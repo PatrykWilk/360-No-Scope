@@ -2,6 +2,7 @@
     include('_includes/config.inc');
     include('_includes/connect_db.php');
     include('_includes/header.html');
+    include('_includes/nav.html');
 
     // Check if user is signed in and url is correct
     if(isset($_SESSION['userid']) && isset($_GET['tourid']) && $_GET['tourid'] != NULL){
@@ -51,53 +52,44 @@
         
         ?>
 
-        <!-- Temp Navigation -->
-        <a href="index.php">Home</a><br/>
-        <a href="dashboard.php">Dashboard</a><br/>
-        <a href="account.php">Account</a><br/>
-        <a href="logout.php">Logout</a>
+        <div class="container">
+            <form method="post">
+            <h2>Edit Tour</h2>
+            <div class="row">
+                <div class="col-sm">
+                    <label for="exampleFormControlInput1">ID</label>
+                    <input readonly class="form-control" id="exampleFormControlInput1" value="<?php echo $tourid; ?>">
 
-        <div id="container">
-            <div id="row">
-                <h2>Edit Tour</h2>
+                    <label for="exampleFormControlInput1">Views</label>
+                    <input readonly class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourviews']; ?>">
+                    
+                    <label for="exampleFormControlInput1">Visibility</label>
+                    <input type="checkbox" name="TOURVIS" class="form-control" id="exampleFormControlInput1" <?php if($row['tourvisible'] == 1){echo "checked";}else{echo "";} ?>>
+                </div>
+                <div class="col-sm">
+                    <label for="exampleFormControlInput1">Tour Name</label>
+                    <input name="TOURNAME" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourname']; ?>">
+
+                    <label for="exampleFormControlInput1">Created</label>
+                    <input  readonly class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourcreated']; ?>">
+
+                    <label for="exampleFormControlInput1">Link To View (If visible)</label>
+                    <input readonly class="form-control" id="exampleFormControlInput1" value="<?php echo "www.360noscope.com/viewtour.php?tourid=" . $tourid; ?>">
+                </div>
             </div>
-            <form style="width:400px;" method="post">
-            <div id="row">
-                <div style="width:100%" class="form-group">
-                <label for="exampleFormControlInput1">ID</label>
-                <input readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo $tourid; ?>">
-            </div>`
+            <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
+            </form>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
 
-
-
-        <!-- Edit tour details -->
-        
-        
-            
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Tour Name</label>
-                <input  style="width:100%;" name="TOURNAME" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourname']; ?>">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Visibility</label>
-                <input type="checkbox" name="TOURVIS" class="form-control" id="exampleFormControlInput1" <?php if($row['tourvisible'] == 1){echo "checked";}else{echo "";} ?>>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Views</label>
-                <input  readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourviews']; ?>">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Created</label>
-                <input  readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['tourcreated']; ?>">
-            </div>
-            <div style="width:100%" class="form-group">
-                <label for="exampleFormControlInput1">Link To View (If visible)</label>
-                <input readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo "www.360noscope.com/viewtour.php?tourid=" . $tourid; ?>">
-            </div>
-            <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
-        </form>
 
         <!-- Upload floor plan -->
         <?php if($row['tourfloorplan'] != NULL){ ?>

@@ -1,6 +1,7 @@
 <?php 
     include('_includes/config.inc');
     include('_includes/header.html');
+    include('_includes/nav.html');
 ?>
 
 <h1>Welcome</h1>

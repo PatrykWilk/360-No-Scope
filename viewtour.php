@@ -2,6 +2,7 @@
     include('_includes/config.inc');
     include('_includes/connect_db.php');
     include('_includes/header.html');
+    
     $tourid = $_GET['tourid'];
 
     //SQL STATEMENTS
@@ -46,6 +47,7 @@
         <script src="node_modules\@egjs\view360\dist\view360.pkgd.js"></script>
     </head>
     <body>
+        <?php include('_includes/nav.html'); ?>
         <h1>Visible Tour / Owner View</h1>
 
         <select id="selectRoom" onchange="getname(this)">
