@@ -129,7 +129,6 @@
             <div class="table-responsive">
                 <table class="table table-hover" style="border-style: solid; border-width: 1px; border-color: #cecece;">
                     <thead class="thead-dark">
-                        
                         <tr>
                             <th>Thumbnail</th>
                             <th>Name</th>
