@@ -73,29 +73,24 @@
                 <input style="margin-top:10px;" value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
             </form>
 
-            
-
-
-
-
-
-                
-                
-
             <!-- Upload floor plan -->
             <?php if($row['roomimage'] != NULL){ ?>
                 <!-- If there's a floor plan, show image -->
                 <div class="card" style="width:100%;margin:20px 0px 20px 0px;">
-                    <!-- PATRYK: REPLACE IMG WITH 360 VIEW -->
-                    <img src="uploads360/<?php echo $row['roomimage'] ?>" style="width:100%;" />
-
                     <div class="card-body">
                         <!-- Delete 360 Image -->
+                        <h3>Preview 360 Image</h3>
                         <form action="editroom.php?roomid=<?php echo $roomid;?>" method="post" enctype="multipart/form-data">
                             <input type="submit" value="Delete 360 Image" name="submitDel360" class="btn btn-danger">
                         </form>     
-
                     </div>
+
+
+                    <!-- PATRYK: REPLACE IMG WITH 360 VIEW -->
+                    <img src="uploads360/<?php echo $row['roomimage'] ?>" style="width:100%;" />
+
+
+
                 </div>
             <?php }
             else{ ?>
@@ -108,32 +103,7 @@
             </form>
                 
             <?php } ?>
-
-
-
-
-
-
-
-
         </div>
-
-
-
-        
-        
-
-            
-
-        
-
-
-        
-
-
-
-
-
         <?php
         include('_includes/footer.html');
     }
