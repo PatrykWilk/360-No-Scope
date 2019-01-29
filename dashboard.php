@@ -2,7 +2,7 @@
 include('_includes/config.inc');
 include('_includes/connect_db.php');
 include('_includes/header.html');
-include('_includes/nav.html');
+include('_includes/nav.php');
 // If user is signed in, load page.
 if(isset($_SESSION['userid'])){
     $userid = $_SESSION['userid'];

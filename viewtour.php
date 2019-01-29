@@ -45,27 +45,31 @@
         <script src="node_modules\@egjs\view360\dist\view360.pkgd.js"></script>
     </head>
     <body>
-        <?php if(isset($_SESSION['userid'])) {
-            include('_includes/nav.html');
-        }?>
+        <?php if($row['userid'] == $userID) {
+            include('_includes/nav.php'); ?>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="edittour.php?tourid=<?php echo $tourid; ?>">Edit Tour</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">View Tour</li>
+                </ol>
+            </nav>
+        <?php } ?>
         <div class="container">
             <h1>Visible Tour / Owner View</h1>
             <div id="myPanoViewer" class="viewer"></div>
-            <select id="selectRoom" class="selector" onchange="getname(this)">
-            <?php 
-            foreach ($room_name as $index => $name) {
-                ?> <option value="<?php echo $room_img[$index] ?>"><?php echo $name ?></option>   
-                <?php
-            }
-            ?>
-            </select>
-
-
-            <div class="dropdown-menu">
-                <h6 class="dropdown-header">Dropdown header</h6>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+            <div class="subtext">
+                <span>Select Room:</span>
+                <select id="selectRoom" class="selector" onchange="getname(this)">
+                <?php 
+                foreach ($room_name as $index => $name) {
+                    ?> <option value="<?php echo $room_img[$index] ?>"><?php echo $name ?></option>   
+                    <?php
+                }
+                ?>
+                </select>
             </div>
+            
 
         </div>
 

@@ -2,7 +2,7 @@
     include('_includes/config.inc');
     include('_includes/connect_db.php');
     include('_includes/header.html');
-    include('_includes/nav.html');
+    include('_includes/nav.php');
 
     // Check if user is signed in and url is correct
     if(isset($_SESSION['userid']) && isset($_GET['tourid']) && $_GET['tourid'] != NULL){
@@ -98,7 +98,7 @@
                     <div class="row" style="margin-top:30px;">
                         <!-- If the Floor Plan Exists -->
                         <?php if($row['tourfloorplan'] != NULL){ ?>
-                        <div class="card" style="width: 100%;">
+                        <div class="card" style="width: 97%;">
                             <img src="uploadsFP/<?php echo $row['tourfloorplan']; ?>" class="card-img-top" />
                             <div class="card-body">
                                 <form action="edittour.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
@@ -123,28 +123,30 @@
             <h2>Rooms</h2>
             
             <!-- Listing rooms associated with tour -->
-            <table class="table table-hover" style="border-style: solid; border-width: 1px; border-color: #cecece;">
-                <thead>
-                    
-                    <tr>
-                        <th>Thumbnail</th>
-                        <th>Name</th>
-                        <th>Floor</th>
-                    </tr>
-                </thead>
-                    <?php while($row1 = mysqli_fetch_assoc($result1)){ ?>
-                        <tr style="cursor:pointer;" onclick="window.location='editroom.php?roomid=<?php echo $row1["roomid"]; ?>'">
-                            <?php if($row1['roomimage'] != NULL){ ?>
-                                <td> <img src="uploads360/<?php echo $row1['roomimage']; ?>" style="width:250px; margin:0px auto 0px auto;" /> </td>
-                            <?php } else{ ?>
-                                <td>No Image Found</td>
-                            <?php } ?>
-                            
-                            <td> <?php echo $row1["roomname"];?> </td>
-                            <td> <?php echo $row1["roomfloor"];?> </td>
+            <div class="table-responsive">
+                <table class="table table-hover" style="border-style: solid; border-width: 1px; border-color: #cecece;">
+                    <thead class="thead-dark">
+                        
+                        <tr>
+                            <th>Thumbnail</th>
+                            <th>Name</th>
+                            <th>Floor</th>
                         </tr>
-                    <?php } ?>
-            </table>
+                    </thead>
+                        <?php while($row1 = mysqli_fetch_assoc($result1)){ ?>
+                            <tr style="cursor:pointer;" onclick="window.location='editroom.php?roomid=<?php echo $row1["roomid"]; ?>'">
+                                <?php if($row1['roomimage'] != NULL){ ?>
+                                    <td> <img src="uploads360/<?php echo $row1['roomimage']; ?>" style="width:200px; margin:0px auto 0px auto;" /> </td>
+                                <?php } else{ ?>
+                                    <td>No Image Found</td>
+                                <?php } ?>
+                                
+                                <td> <?php echo $row1["roomname"];?> </td>
+                                <td> <?php echo $row1["roomfloor"];?> </td>
+                            </tr>
+                        <?php } ?>
+                </table>
+            </div>
 
                 <form action="_includes/submitaddroom.php?tourid=<?php echo $tourid; ?>" method="POST" style="width:100%;">
                     <div class="form-group">

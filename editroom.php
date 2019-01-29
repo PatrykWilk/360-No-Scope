@@ -2,7 +2,7 @@
     include('_includes/config.inc');
     include('_includes/connect_db.php');
     include('_includes/header.html');
-    include('_includes/nav.html');
+    include('_includes/nav.php');
 
     // Check if user is signed in and url is correct
     if(isset($_SESSION['userid']) && isset($_GET['roomid']) && $_GET['roomid'] != NULL){
