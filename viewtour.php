@@ -27,15 +27,10 @@
             $room_img[] = $roomrow['roomimage'];
         }
 
-        // print_r($room_name);
-        // print_r($room_img);
-
-        // foreach($room_name as $index => $name) {
-        //     echo $name ." - ". $room_img[$index] . "\n\n\n\n";
-        // }
-
-
+        
     }
+
+
 
     //CHECKING IF PAGE IS PUBLIC / IF USER IS LOGGED IN -> DISPLAY PAGE ACCORDINGLY
     if(isset($_SESSION['userid'])){$userID=$_SESSION['userid'];}else{$userID=NULL;}
@@ -56,7 +51,9 @@
             </nav>
         <?php } ?>
         <div class="container">
-            <h1>Visible Tour / Owner View</h1>
+            <h1 class="text-center mt-5"><?php echo $row['tourname'];?></h1>
+
+            <?php if($roomrows != 0) { ?>
             <div id="myPanoViewer" class="viewer"></div>
             <div class="subtext">
                 <span>Select Room:</span>
@@ -68,9 +65,7 @@
                 }
                 ?>
                 </select>
-            </div>
-            
-
+            </div>            
         </div>
 
         <script>
@@ -102,6 +97,7 @@
             )
 
         </script>
+        <?php } ?>
 
     </body>
     
