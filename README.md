@@ -4,5 +4,10 @@ CO659 - Enterprise System Development
 
 # Developers
 Patryk Wilk<br/>
-Joseph Hopping<br/>
+Joe Hopping<br/>
 Duje Bavčević
+
+# Contributions
+Patryk: Javascript files<br/>
+Joe: PHP and Bootstrap<br/>
+Deje: CSS for very small pages
