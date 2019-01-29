@@ -10,7 +10,7 @@
     if(isset($_SESSION['userid'])){?>
         <p>You are logged in as <?php echo $_SESSION['firstname']?> <?php echo $_SESSION['lastname']?>.</p>
         <a style="margin-top:10px;" href="dashboard.php" class="btn btn-primary">Dashboard</a>
-        <a style="margin-top:10px;" href="logout.php" class="btn btn-primary">Logout</a>
+        <a style="margin-top:10px;" href="logout.php" class="btn btn-danger">Logout</a>
     <?php }
     else{?>
         <p>Create an account or sign in.</p>
