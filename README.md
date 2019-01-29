@@ -7,7 +7,3 @@ Patryk Wilk<br/>
 Joe Hopping<br/>
 Duje Bavčević
 
-# Contributions
-Patryk: Javascript files<br/>
-Joe: PHP and Bootstrap<br/>
-Duje: CSS for very small pages
