@@ -75,7 +75,7 @@
                 const panoViewer = new PanoViewer(
                     document.getElementById("myPanoViewer"),
                     {
-                        image: "uploads/"+x
+                        image: "uploads360/"+x
                     }
                 )
             };
