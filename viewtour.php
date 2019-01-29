@@ -45,9 +45,16 @@
         <script src="node_modules\@egjs\view360\dist\view360.pkgd.js"></script>
     </head>
     <body>
-        <?php if(isset($_SESSION['userid'])) {
-            include('_includes/nav.html');
-        }?>
+        <?php if($row['userid'] == $userID) {
+            include('_includes/nav.html'); ?>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="edittour.php?tourid=<?php echo $tourid; ?>">Edit Tour</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">View Tour</li>
+                </ol>
+            </nav>
+        <?php } ?>
         <div class="container">
             <h1>Visible Tour / Owner View</h1>
             <div id="myPanoViewer" class="viewer"></div>
