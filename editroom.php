@@ -44,59 +44,91 @@
         }
         ?>
 
-        <!-- Edit room details -->
-        <h2>Edit Room</h2>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="edittour.php?tourid=<?php echo $row['tourid']; ?>">Edit Tour</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Room</li>
-            </ol>
-        </nav>
-        <form style="width:400px;" method="post">
-            <div style="width:100%" class="form-group">
-                <label for="exampleFormControlInput1">ID</label>
-                <input readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo $roomid; ?>">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Room Name</label>
-                <input  style="width:100%;" name="ROOMNAME" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['roomname']; ?>">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Floor</label>
-                <input  style="width:100%;" name="ROOMFLOOR" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['roomfloor']; ?>">
-            </div>
-            <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
-        </form>
+        <div class="container">
+            <h2>Edit Room</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="edittour.php?tourid=<?php echo $row['tourid']; ?>">Edit Tour</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Room</li>
+                </ol>
+            </nav>
+            <hr>
+            <!-- Edit room details -->
+            <form method="post">
+                <div class="row">
+                    <div class="col">
+                        <label for="exampleFormControlInput1">ID</label>
+                        <input readonly style="width:100%;" class="form-control" id="exampleFormControlInput1" value="<?php echo $roomid; ?>">
+                    </div>
+                    <div class="col">
+                        <label for="exampleFormControlInput1">Room Name</label>
+                        <input  style="width:100%;" name="ROOMNAME" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['roomname']; ?>">
+                    </div>
+                    <div class="col">
+                        <label for="exampleFormControlInput1">Floor</label>
+                        <input  style="width:100%;" name="ROOMFLOOR" class="form-control" id="exampleFormControlInput1" value="<?php echo $row['roomfloor']; ?>">
+                    </div>
+                </div>
+                <input style="margin-top:10px;" value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
+            </form>
+
+            
+
+
+
+
+
+                
+                
+
+            <!-- Upload floor plan -->
+            <?php if($row['roomimage'] != NULL){ ?>
+                <!-- If there's a floor plan, show image -->
+                <div class="card" style="width:100%;margin:20px 0px 20px 0px;">
+                    <!-- PATRYK: REPLACE IMG WITH 360 VIEW -->
+                    <img src="uploads360/<?php echo $row['roomimage'] ?>" style="width:100%;" />
+
+                    <div class="card-body">
+                        <!-- Delete 360 Image -->
+                        <form action="editroom.php?roomid=<?php echo $roomid;?>" method="post" enctype="multipart/form-data">
+                            <input type="submit" value="Delete 360 Image" name="submitDel360" class="btn btn-danger">
+                        </form>     
+
+                    </div>
+                </div>
+            <?php }
+            else{ ?>
+                <!-- Upload 360 Image -->
+                <h2 style="margin-top:30px;">Upload 360 Image</h2>
+                <form action="upload360.php?roomid=<?php echo $roomid;?>" method="post" enctype="multipart/form-data">
+                Select image to upload:
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="submit" value="Upload Image" name="submit360">
+            </form>
+                
+            <?php } ?>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+        
+        
+
+            
 
         
 
 
-        <!-- Upload floor plan -->
-        <?php if($row['roomimage'] != NULL){ ?>
-            <!-- If there's a floor plan, show image -->
-
-            <!-- PATRYK: REPLACE IMG WITH 360 VIEW -->
-            <img src="uploads360/<?php echo $row['roomimage'] ?>" style="width:500px;" />
-
-
-            <!-- Delete 360 Image -->
-            <form action="editroom.php?roomid=<?php echo $roomid;?>" method="post" enctype="multipart/form-data">
-                <input type="submit" value="Delete" name="submitDel360">
-            </form>     
-
-            
-        <?php }
-        else{ ?>
-            <!-- Upload 360 Image -->
-            <h2>Upload 360 Image</h2>
-            <form action="upload360.php?roomid=<?php echo $roomid;?>" method="post" enctype="multipart/form-data">
-            Select image to upload:
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Upload Image" name="submit360">
-        </form>
-            
-        <?php } ?>
+        
 
 
 

@@ -125,6 +125,7 @@
             <!-- Listing rooms associated with tour -->
             <table class="table table-hover" style="border-style: solid; border-width: 1px; border-color: #cecece;">
                 <thead>
+                    
                     <tr>
                         <th>Thumbnail</th>
                         <th>Name</th>
@@ -132,7 +133,7 @@
                     </tr>
                 </thead>
                     <?php while($row1 = mysqli_fetch_assoc($result1)){ ?>
-                        <tr style="cursor:pointer;" onclick="window.location='editroom.php?roomid=<?php echo $row1["roomid"]; ?>''">
+                        <tr style="cursor:pointer;" onclick="window.location='editroom.php?roomid=<?php echo $row1["roomid"]; ?>'">
                             <?php if($row1['roomimage'] != NULL){ ?>
                                 <td> <img src="uploads360/<?php echo $row1['roomimage']; ?>" style="width:250px; margin:0px auto 0px auto;" /> </td>
                             <?php } else{ ?>
