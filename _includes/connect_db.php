@@ -1,6 +1,6 @@
 <?php
     $servername = "localhost";
-    $username = "roots";
+    $username = "root";
     $password = "";
     $database = "360noscope";
 
