@@ -1,8 +1,8 @@
 # 360-No-Scope
-Buckinghamshire New University
+Buckinghamshire New University<br/>
 CO659 - Enterprise System Development
 
 # Developers
-Patryk Wilk
-Joseph Hopping
+Patryk Wilk<br/>
+Joseph Hopping<br/>
 Duje Bavčević
