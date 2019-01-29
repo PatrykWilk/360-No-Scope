@@ -44,7 +44,25 @@
   .selector {
     float: right;
     font-size: 40px;
-    text-overflow: '';
     -webkit-appearance: none;
     -moz-appearance: none;
+  }
+
+  .dropdown-menu {
+    top: 100%;
+    left: 0;
+    z-index: $zindex-dropdown;
+    float: left;
+    min-width: $dropdown-min-width;
+    padding: $dropdown-padding-y 0;
+    margin: $dropdown-spacer 0 0; // override default ul
+    font-size: $font-size-base; // Redeclare because nesting can cause inheritance issues
+    color: $body-color;
+    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none;
+    background-color: $dropdown-bg;
+    background-clip: padding-box;
+    border: $dropdown-border-width solid $dropdown-border-color;
+    @include border-radius($dropdown-border-radius);
+    @include box-shadow($dropdown-box-shadow);
   }
