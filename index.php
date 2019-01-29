@@ -5,7 +5,7 @@
 ?>
 
 <div class="container">
-<h1>Welcome</h1>
+<h1>Welcome</h1><hr>
 <?php
     if(isset($_SESSION['userid'])){?>
         <p>You are logged in as <?php echo $_SESSION['firstname']?> <?php echo $_SESSION['lastname']?>.</p>
