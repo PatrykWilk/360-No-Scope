@@ -39,6 +39,7 @@ if ($uploadOk == 0) {
         $FPname = $tourid . "_floorplan." . $imageFileType;
         $sql = "UPDATE tours SET tourfloorplan = '$FPname' WHERE tourid = '$tourid'";
         $result = mysqli_query($conn,$sql);
+        header("Location: edittour.php?tourid=" . $tourid);
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

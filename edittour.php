@@ -41,7 +41,13 @@
             else{
                 echo "Invalid inputs<br/>";
             }
-        } 
+        }
+        if(isset($_POST['submitDelFP'])) {
+            unlink('uploadsFP/' . $tourid . '_floorplan.jpg');
+            $sqldel = "UPDATE tours SET tourfloorplan = NULL WHERE tourid = '$tourid'";
+            $resultdel = mysqli_query($conn,$sqldel);
+            header("Refresh:0");          
+        }
         
         ?>
 
@@ -81,12 +87,16 @@
             <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
         </form>
 
+        <!-- Upload floor plan -->
         <?php if($row['tourfloorplan'] != NULL){ ?>
+            <!-- If there's a floor plan, show image -->
             <img src="uploadsFP/<?php echo $tourid; ?>_floorplan.jpg" style="width:500px;" />
-            
+            <form action="edittour.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
+                <input type="submit" value="Delete" name="submitDelFP">
+            </form>     
         <?php }
         else{ ?>
-            <!-- Upload floor plan -->
+            <!-- Floor plan upload -->
             <h2>Upload Floor Plan</h2>
             <form action="uploadFP.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
                 Select image to upload:
