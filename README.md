@@ -10,4 +10,4 @@ Duje Bavčević
 # Contributions
 Patryk: Javascript files<br/>
 Joe: PHP and Bootstrap<br/>
-Deje: CSS for very small pages
+Duje: CSS for very small pages
