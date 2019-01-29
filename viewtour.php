@@ -19,11 +19,19 @@
 
     if ($roomrows > 0){
 
-        while($roomrow = mysqli_fetch_array($roomres)) {
-            $room_arr[] = $roomrow['roomimage'];
+        // $room_arr = array();
+
+        while($roomrow = mysqli_fetch_array($roomres)) {            
+            $room_name[] = $roomrow['roomname'];
+            $room_img[] = $roomrow['roomimage'];
         }
 
-        print_r($room_arr);
+        // print_r($room_name);
+        // print_r($room_img);
+
+        // foreach($room_name as $index => $name) {
+        //     echo $name ." - ". $room_img[$index] . "\n\n\n\n";
+        // }
 
 
     }
@@ -42,8 +50,8 @@
 
         <select id="selectRoom" onchange="getname(this)">
         <?php 
-        foreach ($room_arr as $r) {
-            ?> <option value="<?php echo $r ?>"><?php echo $r ?></option>   
+        foreach ($room_name as $index => $name) {
+            ?> <option value="<?php echo $room_img[$index] ?>"><?php echo $name ?></option>   
             <?php
         }
         ?>
@@ -53,22 +61,33 @@
         <div id="myPanoViewer" class="viewer"></div>
 
         <script>
-            var x;
+            var x = "<?php 
+            if($room_img){
+                echo $room_img[0];
+            } else {
+                echo "";
+            }
+            ?>";
             function getname(selectObject){
                 x = selectObject.value;
-                console.log(x);
+                // create PanoViewer with option
                 var PanoViewer = eg.view360.PanoViewer;
+                const panoViewer = new PanoViewer(
+                    document.getElementById("myPanoViewer"),
+                    {
+                        image: "uploads/"+x
+                    }
+                )
+            };
+            
+            var PanoViewer = eg.view360.PanoViewer;
                 const panoViewer = new PanoViewer(
                 document.getElementById("myPanoViewer"),
                 {
-                    image: "uploads/"+x
+                    image: "uploads360/"+x
                 }
-                )};           
+            )
 
-            // create PanoViewer with option
-              
-
-            
         </script>
 
     </body>
