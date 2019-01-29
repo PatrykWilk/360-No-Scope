@@ -42,7 +42,7 @@
                 echo "Invalid inputs<br/>";
             }
         }
-        if(isset($_POST['submitDelFP'])) {
+        if(isset($_POST['submitDelFP'])){
             unlink('uploadsFP/' . $_POST['submitDelFP']);
             $sqldel = "UPDATE tours SET tourfloorplan = NULL WHERE tourid = '$tourid'";
             $resultdel = mysqli_query($conn,$sqldel);
