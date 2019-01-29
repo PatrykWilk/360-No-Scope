@@ -1,5 +1,6 @@
 <?php 
     include('_includes/config.inc');
+    include('_includes/header.html');
 
 if(isset($_SESSION['userid'])){
     header("Location: dashboard.php");
@@ -9,10 +10,12 @@ else{
     include('_includes/header.html');
     ?>
 
+    <div class="col-xs-1" align="center" style="margin-top: 100px;">
+        
     <div id="loginbox" style="width:400px;">
-            <h2>Login</h2>
+            <h2 class="lol">Login</h2>
             <hr>
-    <h1>cyka</h1>
+    
                 <?php
                     if (isset($errors) && !empty($errors)){
                         echo '<div id="loginerror"><p id="err_msg">There was a problem:<br>';
@@ -37,6 +40,8 @@ else{
             <label style="margin:0px auto 0px auto;">New to 360 No Scope?</label>
             <button class="btn btn-primary" type="submit" name="action" style="width: 100%; font-size: 1.3em; margin-top:10px;" onclick="location.href='register.php';">Register</button>
         </div>
+                </div>
+                
     </div>
     <?php include ('_includes/footer.html');} ?>
 
