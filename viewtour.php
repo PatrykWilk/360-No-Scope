@@ -51,10 +51,14 @@
             </nav>
         <?php } ?>
         <div class="container">
-            <h1 class="text-center mt-5"><?php echo $row['tourname'];?></h1>
+
+            <div class="fp">
+                <img id="fpimg" src="uploadsFP/<?php echo $row['tourfloorplan']; ?>" class="fp d-none" />
+            </div>          
 
             <?php if($roomrows != 0) { ?>
             <div id="myPanoViewer" class="viewer"></div>
+            <h1 class="text-center d-inline"><?php echo $row['tourname'];?></h1>
             <div class="subtext">
                 <span>Select Room:</span>
                 <select id="selectRoom" class="selector" onchange="getname(this)">
@@ -65,10 +69,14 @@
                 }
                 ?>
                 </select>
-            </div>            
+            </div>
         </div>
+            <div class="container">
+                <button id="fpbtn" class="btn btn-primary float-right mt-3" onclick="showFP()">Show Floorplan</button>  
+            </div>
 
         <script>
+            var y = 0;
             var x = "<?php 
             if($room_img){
                 echo $room_img[0];
@@ -86,6 +94,26 @@
                         image: "uploads360/"+x
                     }
                 )
+            };
+
+            function showFP(){
+                if (y == 0) {
+                    document.getElementById("fpimg").classList = "fp d-block";
+                    document.getElementById("myPanoViewer").classList ="viewer d-none";
+                    document.getElementById("fpbtn").innerHTML = "Show 360 View";
+                    y++;
+                } else {
+                    document.getElementById("fpimg").classList = "fp d-none";
+                    document.getElementById("myPanoViewer").classList ="viewer d-block";
+                    document.getElementById("fpbtn").innerHTML = "Show Floorplan";
+                    y--;
+                }
+                
+                
+                // fpimg.classList.add("d-block");
+                // var viewer = document.getElementById("");
+                // viewer.classList.add("d-none");
+
             };
             
             var PanoViewer = eg.view360.PanoViewer;
