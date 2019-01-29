@@ -13,6 +13,8 @@
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($result);
 
+        
+
         // When user submits to save details   
         if (isset($_POST['submit'])) {
             if(!empty($_POST['ROOMNAME']) && !empty($_POST['ROOMFLOOR'])){
@@ -36,6 +38,12 @@
             }
         }
 
+        if (isset($_POST['delete'])) {
+            $dsql = "DELETE FROM rooms WHERE roomid = $roomid";
+            $dres = mysqli_query($conn,$dsql);
+            header("location:edittour.php?tourid=8");
+        }
+
         if(isset($_POST['submitDel360'])) {
             unlink('uploads360/' . $row['roomimage']);
             $sqldel = "UPDATE rooms SET roomimage = NULL WHERE roomid = '$roomid'";
@@ -43,6 +51,11 @@
             header("Refresh:0");          
         }
         ?>
+
+        <head>
+            <script src="https://naver.github.io/egjs-view360/common/js/jquery-2.2.4.js"></script>
+            <script src="node_modules\@egjs\view360\dist\view360.pkgd.js"></script>
+        </head>
 
         <div class="container">
             <h2>Edit Room</h2>
@@ -71,11 +84,12 @@
                     </div>
                 </div>
                 <input style="margin-top:10px;" value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
+                <input style="margin-top:10px;" value="Delete Room" type="submit" name="delete" class="btn btn-danger"/>                
             </form>
 
-            <!-- Upload floor plan -->
+            <!-- Upload room image -->
             <?php if($row['roomimage'] != NULL){ ?>
-                <!-- If there's a floor plan, show image -->
+                <!-- If there's an image show 360 view -->
                 <div class="card" style="width:100%;margin:20px 0px 20px 0px;">
                     <div class="card-body">
                         <!-- Delete 360 Image -->
@@ -85,9 +99,20 @@
                         </form>     
                     </div>
 
+                    <div id="myPanoViewer" class="viewer"></div>
 
                     <!-- PATRYK: REPLACE IMG WITH 360 VIEW -->
-                    <img src="uploads360/<?php echo $row['roomimage'] ?>" style="width:100%;" />
+                    <script>
+                        var x = "<?php echo $row['roomimage']; ?>";
+                        var PanoViewer = eg.view360.PanoViewer;
+                        const panoViewer = new PanoViewer(
+                        document.getElementById("myPanoViewer"),
+                        {
+                            image: "uploads360/"+x
+                        }
+                        )
+                    </script>
+
 
 
 
