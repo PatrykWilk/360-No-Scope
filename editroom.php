@@ -33,7 +33,15 @@
             else{
                 echo "Invalid inputs<br/>";
             }
-        } ?>
+        }
+
+        if(isset($_POST['submitDel360'])) {
+            unlink('uploads360/' . $row['roomimage']);
+            $sqldel = "UPDATE rooms SET roomimage = NULL WHERE roomid = '$roomid'";
+            $resultdel = mysqli_query($conn,$sqldel);
+            header("Refresh:0");          
+        }
+        ?>
 
         <!-- Temp Navigation -->
         <a href="index.php">Home</a><br/>
@@ -59,34 +67,29 @@
             <input value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
         </form>
 
-        <!-- Upload 360 Image -->
-        <h2>Upload 360 Image</h2>
-        <form action="upload360.php?roomid=<?php echo $roomid;?>" method="post" enctype="multipart/form-data">
-            Select image to upload:
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Upload Image" name="submit360">
-        </form>
+        
 
 
         <!-- Upload floor plan -->
         <?php if($row['roomimage'] != NULL){ ?>
             <!-- If there's a floor plan, show image -->
             <!-- PATRYK PUT 360 VIEW HERE -->
-            <img src="uploads360/<?php echo $tourid; ?>_floorplan.jpg" style="width:500px;" />
-            <form action="edittour.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
-                <input type="submit" value="Delete" name="submitDelFP">
+            <img src="uploads360/<?php echo $row['roomimage'] ?>" style="width:500px;" />
+            <form action="editroom.php?roomid=<?php echo $roomid;?>" method="post" enctype="multipart/form-data">
+                <input type="submit" value="Delete" name="submitDel360">
             </form>     
 
             
         <?php }
         else{ ?>
-            <!-- Floor plan upload -->
-            <h2>Upload Floor Plan</h2>
-            <form action="uploadFP.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
-                Select image to upload:
-                <input type="file" name="fileToUpload" id="fileToUpload">
-                <input type="submit" value="Upload Image" name="submitFP">
-            </form>
+            <!-- Upload 360 Image -->
+            <h2>Upload 360 Image</h2>
+            <form action="upload360.php?roomid=<?php echo $roomid;?>" method="post" enctype="multipart/form-data">
+            Select image to upload:
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="submit" value="Upload Image" name="submit360">
+        </form>
+            
         <?php } ?>
 
 
