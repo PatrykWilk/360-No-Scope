@@ -43,6 +43,7 @@
                 echo "Invalid inputs<br/>";
             }
         }
+        // If user deletes floor plan
         if(isset($_POST['submitDelFP'])){
             unlink('uploadsFP/' . $_POST['submitDelFP']);
             $sqldel = "UPDATE tours SET tourfloorplan = NULL WHERE tourid = '$tourid'";
@@ -52,8 +53,10 @@
         
         ?>
 
+        <!-- Front end start -->
         <div class="container">
             <form method="post">
+            <!-- Edit Tour Details -->
             <h2>Edit Tour</h2>
             <hr>
             <div class="row">
@@ -79,14 +82,16 @@
                     <input style="margin-top:10px;" value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
                     </form>
                 </div>
+                <!-- Upload / View or Delete Floor Plan -->
                 <div class="col-sm"> 
                     <div class="row" style="margin-top:30px;">
+                        <!-- If the Floor Plan Exists -->
                         <?php if($row['tourfloorplan'] != NULL){ ?>
                         <div class="card" style="width: 100%;">
                             <img src="uploadsFP/<?php echo $row['tourfloorplan']; ?>" class="card-img-top" />
                             <div class="card-body">
                                 <form action="edittour.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
-                                    <input type="submit" value="Delete Floor Plan" name="submitDelFP">
+                                    <input type="submit" value="Delete Floor Plan" name="submitDelFP" class="btn btn-primary">
                                 </form>  
                             </div>
                         </div>
@@ -104,10 +109,8 @@
             </div>
             <a href="viewtour.php?tourid=<?php echo $tourid ?>">View Tour</a>
             <hr>
-            <!-- Add room -->
             <h2>Rooms</h2>
             
-
             <!-- Listing rooms associated with tour -->
             <table class="table table-hover" style="border-style: solid; border-width: 1px; border-color: #cecece;">
                 <thead>
@@ -132,8 +135,8 @@
                     <div class="form-group">
                         <label>Add room, insert Room Name here</label>
                         <input type="text" class="form-control" name="roomname">
+                        <input type="submit" value="Add Room" name="action" class="btn btn-primary" style="margin-top:10px;">
                     </div>  
-                    <button type="submit" name="action" style="width: 300px; font-size: 1.3em;margin-top:10px;">Submit</button>
                 </form>
 
 
