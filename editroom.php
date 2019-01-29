@@ -11,7 +11,8 @@
         $sql = "SELECT * FROM rooms WHERE roomid='$roomid'";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($result);
-        $sqlT = "SELECT * FROM tours WHERE '$roomid'";
+        $tourid = $row['tourid'];
+        $sqlT = "SELECT * FROM tours WHERE tourid='$tourid'";
         $resultT = mysqli_query($conn,$sqlT);
         $rowT = mysqli_fetch_array($resultT);
         if($rowT['userid'] == $userid){
@@ -129,13 +130,13 @@
             include('_includes/footer.html');
         }
         else {
-            echo '<h3 style="color:RED">404: Page could not be found.</h3>
+            echo '<h3 style="color:RED">ERROR: You do not own this tour.</h3>
                     <p>You will be redirected shortly.</p>';
                     header( "refresh:1;url=login.php" );
         }
     }
     else {
-        echo '<h3 style="color:RED">404: Page could not be found.</h3>
+        echo '<h3 style="color:RED">ERROR: You are not logged in.</h3>
                 <p>You will be redirected shortly.</p>';
                 header( "refresh:1;url=login.php" );
     }
