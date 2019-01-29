@@ -11,7 +11,7 @@ else{
     ?>
 
     <div class="col-xs-1" align="center" style="margin-top: 100px;">
-        <div class="down">
+        
     <div id="loginbox" style="width:400px;">
             <h2 class="lol">Login</h2>
             <hr>
@@ -41,7 +41,7 @@ else{
             <button class="btn btn-primary" type="submit" name="action" style="width: 100%; font-size: 1.3em; margin-top:10px;" onclick="location.href='register.php';">Register</button>
         </div>
                 </div>
-                </div>
+                
     </div>
     <?php include ('_includes/footer.html');} ?>
 
