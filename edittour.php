@@ -82,20 +82,21 @@
                     <label for="exampleFormControlInput1">Link To View (If visible)</label>
                     <input readonly class="form-control" id="exampleFormControlInput1" value="<?php echo "www.360noscope.com/viewtour.php?tourid=" . $tourid; ?>">
 
-                    <div class="form-check" style="margin-top:10px;">
+                    <div class="form-check" style="margin:10px 0px 10px 0px;">
                         <input class="form-check-input"  name="TOURVIS" type="checkbox" id="defaultCheck1" <?php if($row['tourvisible'] == 1){echo "checked";}else{echo "";} ?>>
                         <label class="form-check-label" for="defaultCheck1">
                             Publicly Visible
                         </label>
                     </div>
-
-                    <input style="margin-top:10px;" value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
+                    <div class="btn-toolbar">
+                    <input  value="Update Details" type="submit" name="submit" class="btn btn-primary"/>
                     </form>
                     <form action="deletetour.php?tourid=<?php echo $tourid;?>" method="post" enctype="multipart/form-data">
-                        <input type="submit" value="Delete Tour" name="submitDelTour" class="btn btn-danger">
+                        <input style="margin: 0px 10px 0px 10px;" type="submit" value="Delete Tour" name="submitDelTour" class="btn btn-danger">
                     </form>  
-                    <a style="margin-top:10px;" href="viewtour.php?tourid=<?php echo $tourid ?>" class="btn btn-primary">View Tour</a>
+                    <a  href="viewtour.php?tourid=<?php echo $tourid ?>" class="btn btn-primary">View Tour</a>
                 </div>
+            </div>
                 <!-- Upload / View or Delete Floor Plan -->
                 <div class="col-sm"> 
                     <div class="row" style="margin-top:30px;">
@@ -129,6 +130,7 @@
             <div class="table-responsive">
                 <table class="table table-hover" style="border-style: solid; border-width: 1px; border-color: #cecece;">
                     <thead class="thead-dark">
+                        
                         <tr>
                             <th>Thumbnail</th>
                             <th>Name</th>

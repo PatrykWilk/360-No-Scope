@@ -5,9 +5,6 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="index.php">Home</a>
-      </li>
       <?php if(isset($_SESSION['userid'])){ ?>
         <li class="nav-item">
           <a class="nav-link" href="dashboard.php">Dashboard</a>

@@ -17,7 +17,7 @@ if(isset($_SESSION['userid'])){
         <!-- Add tour to user with just name -->
         <?php require('_includes/submitaddtour.php'); ?>
         <form action="dashboard.php" method="POST" style="width:100%;">
-            <label><strong>Add Tour</strong></label>
+            <h4>Add Tour</h4>
             <div class="input-group" style="width:50%;">
                 <input placeholder="Tour name" type="text" class="form-control"  name="tourname" value="<?php if(isset($_POST['tourname'])) echo$_POST['tourname'];?>"> 
                 <button type="submit" name="action" class="btn btn-primary" style="width: 30%; font-size: 1.1em; margin-top: -1px; margin-left:20px;">Add</button>
