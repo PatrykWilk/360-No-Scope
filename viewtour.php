@@ -51,21 +51,18 @@
         <div class="container">
             <h1>Visible Tour / Owner View</h1>
             <div id="myPanoViewer" class="viewer"></div>
-            <select id="selectRoom" class="selector" onchange="getname(this)">
-            <?php 
-            foreach ($room_name as $index => $name) {
-                ?> <option value="<?php echo $room_img[$index] ?>"><?php echo $name ?></option>   
-                <?php
-            }
-            ?>
-            </select>
-
-
-            <div class="dropdown-menu">
-                <h6 class="dropdown-header">Dropdown header</h6>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+            <div class="subtext">
+                <span>Select Room:</span>
+                <select id="selectRoom" class="selector" onchange="getname(this)">
+                <?php 
+                foreach ($room_name as $index => $name) {
+                    ?> <option value="<?php echo $room_img[$index] ?>"><?php echo $name ?></option>   
+                    <?php
+                }
+                ?>
+                </select>
             </div>
+            
 
         </div>
 
