@@ -43,7 +43,7 @@
             }
         }
         if(isset($_POST['submitDelFP'])) {
-            unlink('uploadsFP/' . $tourid . '_floorplan.jpg');
+            unlink('uploadsFP/' . $_POST['submitDelFP']);
             $sqldel = "UPDATE tours SET tourfloorplan = NULL WHERE tourid = '$tourid'";
             $resultdel = mysqli_query($conn,$sqldel);
             header("Refresh:0");          
