@@ -17,17 +17,13 @@
     $roomrows = mysqli_num_rows($roomres);
 
     //Putting things into array
-
     if ($roomrows > 0){
 
         // $room_arr = array();
-
         while($roomrow = mysqli_fetch_array($roomres)) {            
             $room_name[] = $roomrow['roomname'];
             $room_img[] = $roomrow['roomimage'];
         }
-
-        
     }
 
 
@@ -56,11 +52,14 @@
                 <img id="fpimg" src="uploadsFP/<?php echo $row['tourfloorplan']; ?>" class="fp d-none" />
             </div>          
 
+            <!-- ONLY RENDER IF ROOMS WERE ADDED -->
             <?php if($roomrows != 0) { ?>
             <div id="myPanoViewer" class="viewer"></div>
             <h1 class="text-center d-inline"><?php echo $row['tourname'];?></h1>
             <div class="subtext">
                 <span>Select Room:</span>
+                <!-- ADD ROOM NAMES INTO DROPDOWN LIST -->                
+                <!-- CHANGE IMAGE BASED ON DROPDOWN LIST SELECTION -->                
                 <select id="selectRoom" class="selector" onchange="getname(this)">
                 <?php 
                 foreach ($room_name as $index => $name) {
